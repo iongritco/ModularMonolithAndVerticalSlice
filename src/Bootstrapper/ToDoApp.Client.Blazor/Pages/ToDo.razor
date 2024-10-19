@@ -1,0 +1,46 @@
+﻿@page "/todo"
+
+<h1>To Do</h1>
+
+<p>To Do list.</p>
+
+@if (_toDoList == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Created date</th>
+                <th scope="col">Description</th>
+                <th scope="col">Status</th>
+                <th scope="col">Start</th>
+                <th scope="col">Complete</th>
+                <th scope="col">Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var toDo in _toDoList)
+            {
+                <tr class="@(toDo.Status==Status.Completed?"table-success":toDo.Status==Status.InProgress?"table-warning":"table-primary")">
+                    <td>@toDo.CreatedDate.ToShortDateString()</td>
+                    <td>@toDo.Description</td>
+                    <td>@toDo.Status.ToString()</td>
+                    <td><button @onclick="@(() => StartTodo(toDo.Id))"><i class="oi oi-media-play"></i></button></td>
+                    <td><button @onclick="@(() => CompleteTodo(toDo.Id))"><i class="oi oi-check"></i></button></td>
+                    <td><button @onclick="@(() => RemoveTodo(toDo.Id))"><i class="oi oi-trash"></i></button></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@if (_toDoList != null)
+{
+    <div class="form-inline">
+        <input class="form-control col-mb-4" placeholder="Add new item" @bind="@_newItem" />
+        <button class="btn btn-primary col-mb-2" @onclick="@AddTodo">Create</button>
+    </div>
+}
