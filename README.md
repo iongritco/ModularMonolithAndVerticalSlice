@@ -1,7 +1,7 @@
 [![.NET](https://github.com/iongritco/ModularMonolithAndVerticalSlice/actions/workflows/dotnet.yml/badge.svg)](https://github.com/iongritco/ModularMonolithAndVerticalSlice/actions/workflows/dotnet.yml)
 
 # ModularMonolith with Vertical Slice architecture
-A playground for experimenting projects with a Modular Monolith with Vertical Slice Architecture - DDD, CQRS, MediatR, .NET 8, Entity Framework Core
+A playground for experimenting projects with a Modular Monolith with Vertical Slice Architecture - DDD, CQRS, MediatR, .NET 9, Entity Framework Core
 
 ## Setup
 - To get started, just create the databases ToDo and ToDo_Tests and update the connection string in appsettings (both in ToDoApp.Server.API and in ToDoApp.Tests.EndToEnd for integration tests) - the migration will be executed automatically on the first run. 
